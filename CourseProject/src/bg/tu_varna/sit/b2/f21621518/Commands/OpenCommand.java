@@ -1,4 +1,6 @@
-package bg.tu_varna.sit.b2.f21621518;
+package bg.tu_varna.sit.b2.f21621518.Commands;
+
+import bg.tu_varna.sit.b2.f21621518.Commands.Command;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -12,10 +12,20 @@ public class Main
 
         while (!closeProgram)
         {
+            //Reading Input Line (Command)
             System.out.print("> ");
             String inputLine=scanner.nextLine();
+
+            //Input line being split by delimiter to get input arguments
             String[] inputArgs=inputLine.split("\\s+");
 
+            String currentCommand=inputArgs[0];
+            System.out.println(currentCommand);
+            //Switch case for different commands from CLI
+            switch (currentCommand)
+            {
+
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.b2.f21621518;
+package bg.tu_varna.sit.b2.f21621518.Commands;
 
 public interface Command
 {
