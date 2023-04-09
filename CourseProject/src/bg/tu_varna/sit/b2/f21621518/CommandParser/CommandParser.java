@@ -15,13 +15,61 @@ public class CommandParser
 
     public static void close()
     {
-        //Setting FilePath to null
-        filePath = null;
-        //Clearing content
-        content.clear();
+        try
+        {
+            boolean filePathIsNotOpened = filePath == null;
 
-        System.out.println("Content cleared.");
+            if (filePathIsNotOpened)
+            {
+                throw new IllegalStateException("There is no opened file yet");
+            }
+            //Setting FilePath to null
+            filePath = null;
+
+            //Clearing content
+            content.clear();
+
+            System.out.println("Content from file cleared.");
+        }
+        catch (IllegalStateException ex)
+        {
+            System.out.println(ex);
+        }
     }
+    public static void exit()
+    {
+        boolean fileIsNotEmpty=!(content.isEmpty());
+
+        if (fileIsNotEmpty)
+        {
+
+        }
+        System.out.println("Exiting the program...");
+        System.exit(1);
+
+    }
+
+    public static void saveAs(Path newPath) throws  IOException
+    {
+        Files.write(newPath,content);
+        filePath=newPath;
+        System.out.println("Successfully saved! "+filePath.getFileName());
+    }
+
+    public static void save() throws IOException
+    {
+        boolean fileNotOpened=filePath==null;
+
+        if (fileNotOpened)
+        {
+            throw new IllegalStateException("File is not currently opened");
+        }
+
+        Files.write(filePath,content);
+        System.out.println("Successfully saved! "+filePath.getFileName());
+
+    }
+
 
     public static List<String> getContent()
     {
