@@ -2,6 +2,8 @@ package bg.tu_varna.sit.b2.f21621518;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public class Appointment
 {
@@ -12,7 +14,9 @@ public class Appointment
     private LocalTime startTime;
     private LocalTime endTime;
 
+    //Name of appointment
     private String name;
+    //Some note about the appointment
     private String note;
 
     public Appointment(LocalDate date,LocalTime startTime,LocalTime endTime,String name,String note)
@@ -64,4 +68,12 @@ public class Appointment
         this.note = note;
     }
 
+    public String toString() {
+        return "Appointment ->" +
+                "Date:" + date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)) +
+                ", Start Time:" + startTime.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)) +
+                ", End Time:" + endTime.format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT)) +
+                ", Name:'" + name + '\'' +
+                ", Note:'" + note + '\'' ;
+    }
 }
