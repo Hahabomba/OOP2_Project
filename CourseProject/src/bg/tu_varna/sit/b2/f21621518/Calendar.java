@@ -7,4 +7,7 @@ public interface Calendar
 {
  void book(Appointment appointmentToBook);
  void unbook(LocalDate date, LocalTime startTime,LocalTime endTime);
+ void agenda(LocalDate date);
+
+ void find(String string);
 }
