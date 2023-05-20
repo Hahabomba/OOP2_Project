@@ -9,5 +9,13 @@ public interface Calendar
  void unbook(LocalDate date, LocalTime startTime,LocalTime endTime);
  void agenda(LocalDate date);
 
+ void change(LocalDate date,LocalTime startTime,String option,String newValue);
+
  void find(String string);
+
+ void holiday(LocalDate date);
+
+ void busyDays(LocalDate beginDate,LocalDate endDate);
+
+ void findSlot(LocalDate fromDate,double hoursDuration);
 }

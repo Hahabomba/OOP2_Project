@@ -19,6 +19,8 @@ public class Appointment
     //Some note about the appointment
     private String note;
 
+    private boolean isInHolidayDay;
+
     public Appointment(LocalDate date,LocalTime startTime,LocalTime endTime,String name,String note)
     {
         this.date=date;
@@ -26,6 +28,7 @@ public class Appointment
         this.endTime=endTime;
         this.name=name;
         this.note=note;
+        this.isInHolidayDay=false;
     }
 
     public LocalDate getDate() {
@@ -66,6 +69,14 @@ public class Appointment
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public boolean isInHolidayDay() {
+        return this.isInHolidayDay;
+    }
+
+    public void setInHolidayDay(boolean inHolidayDay) {
+        isInHolidayDay = inHolidayDay;
     }
 
     public String toString() {

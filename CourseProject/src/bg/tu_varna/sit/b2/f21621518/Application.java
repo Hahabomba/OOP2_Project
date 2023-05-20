@@ -38,11 +38,17 @@ public class Application
         Appointment fourthAppointment=new Appointment(secondDate,fourthStartTime,fourthEndTime,"Get the car to a mechanic","Service interval past due!");
 
 
+        //Fifth appointment (For New Date)
+        LocalTime fifthStartTime=LocalTime.of(14,30,00);
+        LocalTime fifthEndTime=LocalTime.of(17,00,00);
+        Appointment fifthAppointment=new Appointment(secondDate,fifthStartTime,fifthEndTime,"Clean the house!","Prepare everything for cleaning!");
+
         //Booking appointments
         personalCalendar.book(firstAppointment);
         personalCalendar.book(secondAppointment);
         personalCalendar.book(thirdAppointment);
         personalCalendar.book(fourthAppointment);
+        personalCalendar.book(fifthAppointment);
 
         System.out.println(personalCalendar);
 
@@ -56,8 +62,20 @@ public class Application
         personalCalendar.agenda(secondDate);
         System.out.println();
 
+        LocalDate dateNotContained = LocalDate.parse("11.01.2020", DateTimeFormatter.ofPattern(europeanDatePattern));
+        personalCalendar.agenda(dateNotContained);
+        //Change
+
+
         //Find
        personalCalendar.find("bank");
        personalCalendar.find("car");
+
+       System.out.println();
+
+       //BusyDays
+       personalCalendar.busyDays(date,secondDate);
+
+        //FindSlot
     }
 }
