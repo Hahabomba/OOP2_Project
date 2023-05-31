@@ -17,5 +17,9 @@ public interface Calendar
 
  void busyDays(LocalDate beginDate,LocalDate endDate);
 
- void findSlot(LocalDate fromDate,double hoursDuration);
+ void findSlot(LocalDate fromDate,int hoursDuration);
+
+ void findSlotWith(LocalDate fromDate,int hoursDuration,String calendar);
+
+ void merge(String calendarFileLocation);
 }

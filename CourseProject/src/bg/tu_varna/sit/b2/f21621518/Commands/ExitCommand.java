@@ -1,13 +1,21 @@
 package bg.tu_varna.sit.b2.f21621518.Commands;
 
+import bg.tu_varna.sit.b2.f21621518.CommandParser.CommandParser;
 import bg.tu_varna.sit.b2.f21621518.Commands.Command;
+
+import java.io.IOException;
 
 public class ExitCommand implements Command
 {
     @Override
     public void execute(String[] args)
     {
-        System.out.println("Exiting the program...");
-        System.exit(1);
+       try {
+           CommandParser.getInstance().exit();
+       }
+       catch (IOException ex)
+       {
+           System.out.println("Error occured while trying to exit: "+ex.getMessage());
+       }
     }
 }

@@ -13,11 +13,23 @@ public class CommandParser
     static public Path filePath;
     static public List<String> content = new ArrayList<>();
 
-    public static void close()
+    private static  CommandParser commandParserInstance;
+
+    public static  CommandParser getInstance()
     {
-        try
+        if (commandParserInstance==null)
         {
-            boolean filePathIsNotOpened = filePath == null;
+            commandParserInstance=new CommandParser();
+        }
+
+        return commandParserInstance;
+    }
+
+
+
+    public static void close() throws IOException
+    {
+            boolean filePathIsNotOpened = (filePath == null);
 
             if (filePathIsNotOpened)
             {
@@ -30,19 +42,15 @@ public class CommandParser
             content.clear();
 
             System.out.println("Content from file cleared.");
-        }
-        catch (IllegalStateException ex)
-        {
-            System.out.println(ex);
-        }
     }
-    public static void exit()
+    public static void exit() throws IOException
     {
         boolean fileIsNotEmpty=!(content.isEmpty());
 
         if (fileIsNotEmpty)
         {
-
+            save();
+            close();
         }
         System.out.println("Exiting the program...");
         System.exit(1);
@@ -58,7 +66,7 @@ public class CommandParser
 
     public static void save() throws IOException
     {
-        boolean fileNotOpened=filePath==null;
+        boolean fileNotOpened=(filePath==null);
 
         if (fileNotOpened)
         {
@@ -69,6 +77,22 @@ public class CommandParser
         System.out.println("Successfully saved! "+filePath.getFileName());
 
     }
+
+    public static void open(Path newFilePath) throws  IOException
+    {
+        boolean fileExists=Files.exists(newFilePath);
+
+        //It does not exist
+        if (!fileExists)
+        {
+            throw new IOException("File does not exist!");
+        }
+
+        content=Files.readAllLines(newFilePath);
+        filePath=newFilePath;
+        System.out.println("Succesfully opened "+filePath.getFileName());
+    }
+
 
 
     public static List<String> getContent()

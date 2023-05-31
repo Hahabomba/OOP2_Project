@@ -35,7 +35,8 @@ public class SaveAsCommand implements Command
 
     }
 
-    public void setContent(List<String> content) {
+    public void setContent(List<String> content)
+    {
         this.content = content;
     }
 }
